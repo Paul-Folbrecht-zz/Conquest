@@ -1,0 +1,119 @@
+Difference From Empire:
+- Cities can be garrisoned - you must defeat armies in the city before it can be captured
+- UI improvements such as City Info
+- Combat system: Greater hit points means battles are not so often won on the first round, and thus not "all or nothing" affairs
+- Auto-forward
+- Transport could see sub in adjacent square
+
+Bugs:
+- Sighting:
+    - Transport didn't come off Move To when spotting another unit (Unit.updateSightedStatus?)
+        - The way it's implemented now, once a unit is found it's found forever - even if it disappears and moves somewhere else.
+          The found check in updateSightedStatus should take location into account, probably...
+- The hiddenUnit concept clearly breaks down if you have more than one unit moving over another...
+- Movement reports... odd
+
+Tasks:
+- Limit number of units in city?
+- All warships should be faster than transports - they should be catchable.
+- GameController.nextUnit should search by proximity
+
+
+Air unit running out of fuel:
+Exception in thread "AWT-EventQueue-0" java.util.ConcurrentModificationException
+	at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:909)
+	at java.util.ArrayList$Itr.next(ArrayList.java:859)
+	at com.osi.conquest.domain.impl.GameControllerImpl.nextUnit(GameControllerImpl.java:396)
+	at com.osi.conquest.ui.MainCanvas$MouseHandler.mouseUp(MainCanvas.java:618)
+	at com.osi.conquest.ui.MainCanvas$MouseHandler.mouseReleased(MainCanvas.java:572)
+	at java.awt.Component.processMouseEvent(Component.java:6539)
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3324)
+	at java.awt.Component.processEvent(Component.java:6304)
+	at java.awt.Container.processEvent(Container.java:2239)
+	at java.awt.Component.dispatchEventImpl(Component.java:4889)
+	at java.awt.Container.dispatchEventImpl(Container.java:2297)
+	at java.awt.Component.dispatchEvent(Component.java:4711)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4904)
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4535)
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4476)
+	at java.awt.Container.dispatchEventImpl(Container.java:2283)
+	at java.awt.Window.dispatchEventImpl(Window.java:2746)
+	at java.awt.Component.dispatchEvent(Component.java:4711)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:760)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:84)
+	at java.awt.EventQueue$4.run(EventQueue.java:733)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:730)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+
+Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException
+	at com.osi.conquest.ui.MainCanvas.getDefinePatrolStatusText(MainCanvas.java:369)
+	at com.osi.conquest.ui.MainCanvas.getStatusBarText(MainCanvas.java:154)
+	at com.osi.conquest.ui.MainWindow.updateStatusBar(MainWindow.java:642)
+	at com.osi.conquest.ui.MainCanvas$MouseMotionHandler.mouseMoved(MainCanvas.java:882)
+	at java.awt.Component.processMouseMotionEvent(Component.java:6584)
+	at javax.swing.JComponent.processMouseMotionEvent(JComponent.java:3342)
+	at java.awt.Component.processEvent(Component.java:6308)
+	at java.awt.Container.processEvent(Container.java:2239)
+	at java.awt.Component.dispatchEventImpl(Component.java:4889)
+	at java.awt.Container.dispatchEventImpl(Container.java:2297)
+	at java.awt.Component.dispatchEvent(Component.java:4711)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4904)
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4548)
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4476)
+	at java.awt.Container.dispatchEventImpl(Container.java:2283)
+	at java.awt.Window.dispatchEventImpl(Window.java:2746)
+	at java.awt.Component.dispatchEvent(Component.java:4711)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:760)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:84)
+	at java.awt.EventQueue$4.run(EventQueue.java:733)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:730)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+
+- Movement reports:
+  - Each time unit moves, search max sight area around it for enemy unit that can sight.
+  - If one is found, check if it is already watching this unit- each player object can be
+    associated with n MovementReports, possibly >1 for the same unit. (2
+    collections- a List of completed MovementReports and a HashMap of OwnableObjects to Lists
+    of reports-in-progress.  Latter stored by GC.).
+    If watching unit does not have MR in progress for unit, add it as a watcher.
+    - Initialize watcher with unit watched & first location.
+    - Add location to list every time unit moves until it's out of sight or turn ends.
+    - Add each combat event to list.
+  - When unit being watched goes out of sight range of watching unit, a MovementReport is created.
+    Add it to list associated with owner of watching unit.
+
+- Combat reports:
+  - Adds unit(s) attacked.
+  - Override play() to show attacks.
+
+- Playing reports:
+  - Command|Show Movement Reports.  Clear reports at end of player's turn.
+  - Consolidate them: if two are equal, or one is a subset of another, get rid of one.
+  - Put up modal dialog to block input.
+  - Place target (watched) unit at first square.  Move through path, pausing for 1 second each square.
